@@ -3,9 +3,7 @@ package pl.fulllegitcode.flcutiltest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import java.util.concurrent.Executors;
-
-import pl.fulllegitcode.util.FlcUtilPlugin;
+import pl.fulllegitcode.util.FlcUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,9 +15,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void _start() {
-        FlcUtilPlugin plugin = new FlcUtilPlugin();
-        plugin.setContext(this);
-        plugin.setThreadPool(Executors.newCachedThreadPool());
-        plugin.acquireWakeLock();
+        FlcUtil.acquireWakeLock(this);
+        FlcUtil.releaseWakeLock();
     }
+
 }
