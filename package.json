@@ -1,0 +1,28 @@
+{
+  "name": "cordova-plugin-flc-util",
+  "version": "1.0.0",
+  "description": "Cordova FullLegitCode Util Plugin",
+  "cordova": {
+    "id": "cordova-plugin-flc-util",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KosmoGalaxy/cordova-plugin-flc-util.git"
+  },
+  "keywords": [
+    "cordova",
+    "fulllegitcode",
+    "flc",
+    "util",
+    "wakelock",
+    "wake lock",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Tomasz Rozwadowski",
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/KosmoGalaxy/cordova-plugin-flc-util"
+}

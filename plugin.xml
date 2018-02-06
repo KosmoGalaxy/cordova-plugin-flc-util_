@@ -5,7 +5,7 @@
     <name>cordova-plugin-flc-util</name>
     <description>Cordova FullLegitCode Util Plugin</description>
     <license>Apache 2.0</license>
-    <keywords>cordova,flc,util,wakelock,wake lock</keywords>
+    <keywords>cordova,fulllegitcode,flc,util,wakelock,wake lock</keywords>
 
     <js-module src="www/flc-util.js" name="FlcUtil">
         <clobbers target="cordova.plugins.FlcUtil" />
