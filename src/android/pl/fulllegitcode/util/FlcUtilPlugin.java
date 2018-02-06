@@ -33,7 +33,7 @@ public class FlcUtilPlugin extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             @Override
             public void run() {
-                String error = FlcUtil.acquireWakeLock(timeout, cordova.getContext());
+                String error = FlcUtil.acquireWakeLock(timeout, cordova.getActivity());
                 if (error != null) {
                     callbackContext.error(error);
                     return;
