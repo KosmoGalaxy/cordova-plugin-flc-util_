@@ -3,7 +3,6 @@ const exec = require('cordova/exec');
 function FlcUtil() {}
 
 FlcUtil.acquireWakeLock = function(a, b, c) {
-  console.log('-- ' + a + ', ' + b + ', ' + c);
   if (a !== null && typeof a !== 'number') {
     FlcUtil.acquireWakeLock(null, a, b);
     return;
