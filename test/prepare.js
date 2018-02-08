@@ -11,7 +11,7 @@ function prepare() {
     (err, data, stderr) => {
       console.log(data);
       cmd.get(
-        'cd cordova && cordova plugin add cordova-plugin-flc-util --searchpath=../..',
+        'cd cordova && cordova plugin add cordova-plugin-flc-util@1.1.0 --searchpath=../..',
         (err, data, stderr) => {
           if (err) {
             console.error(err);

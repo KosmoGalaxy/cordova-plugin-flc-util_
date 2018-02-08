@@ -44,4 +44,22 @@ FlcUtil.releaseWakeLock = function(successCallback, errorCallback) {
   );
 };
 
+FlcUtil.setKeepScreenOn = function(value, successCallback, errorCallback) {
+  exec(
+    function() {
+      if (successCallback) {
+        successCallback();
+      }
+    },
+    function(error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }
+    },
+    'FlcUtil',
+    'setKeepScreenOn',
+    [value]
+  );
+};
+
 module.exports = FlcUtil;

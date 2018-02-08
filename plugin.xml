@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-flc-util" version="1.0.0">
+        id="cordova-plugin-flc-util" version="1.1.0">
     <name>cordova-plugin-flc-util</name>
     <description>Cordova FullLegitCode Util Plugin</description>
     <license>Apache 2.0</license>
