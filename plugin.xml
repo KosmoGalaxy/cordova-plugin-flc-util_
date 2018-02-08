@@ -18,7 +18,7 @@
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="FlcUtil" >
-                <param name="android-package" value="pl.fulllegitcode.util.FlcUtil"/>
+                <param name="android-package" value="pl.fulllegitcode.util.FlcUtilPlugin"/>
             </feature>
         </config-file>
 
