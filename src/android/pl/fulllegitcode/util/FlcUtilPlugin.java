@@ -12,6 +12,7 @@ public class FlcUtilPlugin extends CordovaPlugin {
   public static final String ACTION_ACQUIRE_WAKE_LOCK = "acquireWakeLock";
   public static final String ACTION_RELEASE_WAKE_LOCK = "releaseWakeLock";
   public static final String ACTION_SET_KEEP_SCREEN_ON = "setKeepScreenOn";
+  public static final String ACTION_DECODE_IMAGE = "decodeImage";
 
   @Override
   public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
@@ -25,6 +26,10 @@ public class FlcUtilPlugin extends CordovaPlugin {
     }
     if (action.equals(ACTION_SET_KEEP_SCREEN_ON)) {
       _setKeepScreenOn(args.getBoolean(0), callbackContext);
+      return true;
+    }
+    if (action.equals(ACTION_DECODE_IMAGE)) {
+      _decodeImage(args.getArrayBuffer(0), callbackContext);
       return true;
     }
     return false;
@@ -74,6 +79,15 @@ public class FlcUtilPlugin extends CordovaPlugin {
           cordova.getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
         callbackContext.success();
+      }
+    });
+  }
+
+  private void _decodeImage(final byte[] bytes, final CallbackContext callbackContext) {
+    cordova.getThreadPool().execute(new Runnable() {
+      @Override
+      public void run() {
+        callbackContext.success(FlcUtil.decodeImage(bytes));
       }
     });
   }
