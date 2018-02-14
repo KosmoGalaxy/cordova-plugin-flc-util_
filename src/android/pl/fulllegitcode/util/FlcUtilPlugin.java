@@ -70,7 +70,7 @@ public class FlcUtilPlugin extends CordovaPlugin {
   }
 
   private void _setKeepScreenOn(final boolean value, final CallbackContext callbackContext) {
-    cordova.getThreadPool().execute(new Runnable() {
+    cordova.getActivity().runOnUiThread(new Runnable() {
       @Override
       public void run() {
         if (value) {
