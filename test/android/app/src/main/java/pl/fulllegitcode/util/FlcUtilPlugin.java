@@ -13,6 +13,7 @@ public class FlcUtilPlugin extends CordovaPlugin {
   public static final String ACTION_RELEASE_WAKE_LOCK = "releaseWakeLock";
   public static final String ACTION_SET_KEEP_SCREEN_ON = "setKeepScreenOn";
   public static final String ACTION_DECODE_IMAGE = "decodeImage";
+  public static final String ACTION_GET_IP = "getIp";
 
   @Override
   public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
@@ -30,6 +31,10 @@ public class FlcUtilPlugin extends CordovaPlugin {
     }
     if (action.equals(ACTION_DECODE_IMAGE)) {
       _decodeImage(args.getArrayBuffer(0), callbackContext);
+      return true;
+    }
+    if (action.equals(ACTION_GET_IP)) {
+      callbackContext.success(FlcUtil.getIp(cordova.getActivity()));
       return true;
     }
     return false;

@@ -3,12 +3,16 @@ package pl.fulllegitcode.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.PowerManager;
 import android.util.Log;
 
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.util.Locale;
+
+import static android.content.Context.WIFI_SERVICE;
 
 public class FlcUtil {
 
@@ -54,6 +58,21 @@ public class FlcUtil {
     ByteBuffer buffer = ByteBuffer.allocate(bitmap.getByteCount());
     bitmap.copyPixelsToBuffer(buffer);
     return buffer.array();
+  }
+
+  public static String getIp(Context context) {
+    try {
+      WifiManager manager = (WifiManager) context.getApplicationContext().getSystemService(WIFI_SERVICE);
+      if (manager != null) {
+        int ip = manager.getConnectionInfo().getIpAddress();
+        if (ip != 0) {
+          return String.format(Locale.ENGLISH, "%d.%d.%d.%d", (ip & 0xff), (ip >> 8 & 0xff), (ip >> 16 & 0xff), (ip >> 24 & 0xff));
+        }
+      }
+    } catch (Exception e) {
+      Log.e("FlcUtil", String.format(Locale.ENGLISH, "get ip. message=%s", e.getMessage()));
+    }
+    return "192.168.43.1";
   }
 
 }

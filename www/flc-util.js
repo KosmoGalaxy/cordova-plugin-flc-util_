@@ -76,4 +76,21 @@ FlcUtil.decodeImage = function(bytes, callback) {
   );
 };
 
+FlcUtil.getIp = function(successCallback, errorCallback) {
+  exec(
+    function(ip) {
+      if (successCallback) {
+        successCallback(ip);
+      }
+    },
+    function(error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }
+    },
+    'FlcUtil',
+    'getIp'
+  );
+};
+
 module.exports = FlcUtil;

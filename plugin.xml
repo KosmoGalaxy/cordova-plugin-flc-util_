@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-flc-util" version="1.2.0">
+        id="cordova-plugin-flc-util" version="1.3.0">
     <name>cordova-plugin-flc-util</name>
     <description>Cordova FullLegitCode Util Plugin</description>
     <license>Apache 2.0</license>
-    <keywords>cordova,fulllegitcode,flc,util,wakelock,wake lock</keywords>
+    <keywords>cordova,fulllegitcode,flc,util,wakelock,wake lock,decode,image,ip,address</keywords>
 
     <js-module src="www/flc-util.js" name="FlcUtil">
         <clobbers target="cordova.plugins.FlcUtil" />
@@ -13,6 +13,7 @@
 
     <platform name="android">
         <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
             <uses-permission android:name="android.permission.WAKE_LOCK"/>
         </config-file>
 
