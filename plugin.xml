@@ -26,4 +26,14 @@
         <source-file src="src/android/pl/fulllegitcode/util/FlcUtilPlugin.java" target-dir="src/pl/fulllegitcode/util" />
         <source-file src="src/android/pl/fulllegitcode/util/FlcUtil.java" target-dir="src/pl/fulllegitcode/util" />
     </platform>
+    
+    <platform name="ios">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FlcUtil">
+                <param name="ios-package" value="pl.fulllegitcode.util.FlcUtilPlugin" />
+            </feature>
+        </config-file>
+        
+        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtilPlugin.swift" />
+    </platform>
 </plugin>
