@@ -90,11 +90,11 @@ function test() {
       canvas.style.border = "1px solid tomato";
       document.body.appendChild(canvas);
       var ctx = canvas.getContext("2d");
-      ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
+      ctx.fillStyle = "rgba(235, 10, 10, 0.7)";
       ctx.fillRect(100, 100, 200, 200);
-      ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
+      ctx.fillStyle = "rgba(0, 255, 0, 0.7)";
       ctx.fillRect(150, 150, 200, 200);
-      ctx.fillStyle = "rgba(0, 0, 255, 0.8)";
+      ctx.fillStyle = "rgba(0, 0, 255, 0.7)";
       ctx.fillRect(200, 50, 200, 200);
       var imageData = ctx.createImageData(256, 256);
       imageData.data.set(new Uint8Array(decodeImageBytes));
