@@ -1,65 +1,54 @@
 import Foundation
 
 @objc(FlcUtilPlugin) class FlcUtilPlugin : CDVPlugin {
-    
-    func acquireWakeLock(command: CDVInvokedUrlCommand) {
-        var pluginResult = CDVPluginResult(
-            status: CDVCommandStatus_OK,
-            messageAsString: "ok"
-        )
-        
-        self.commandDelegate!.sendPluginResult(
-            pluginResult,
-            callbackId: command.callbackId
-        )
-    }
-    
-    func releaseWakeLock(command: CDVInvokedUrlCommand) {
-        var pluginResult = CDVPluginResult(
-            status: CDVCommandStatus_OK,
-            messageAsString: "ok"
-        )
-        
-        self.commandDelegate!.sendPluginResult(
-            pluginResult,
-            callbackId: command.callbackId
-        )
-    }
-    
-    func setKeepScreenOn(command: CDVInvokedUrlCommand) {
-        var pluginResult = CDVPluginResult(
-            status: CDVCommandStatus_OK,
-            messageAsString: "ok"
-        )
-        
-        self.commandDelegate!.sendPluginResult(
-            pluginResult,
-            callbackId: command.callbackId
-        )
-    }
-    
-    func decodeImage(command: CDVInvokedUrlCommand) {
-        var pluginResult = CDVPluginResult(
-            status: CDVCommandStatus_OK,
-            messageAsString: "ok"
-        )
-        
-        self.commandDelegate!.sendPluginResult(
-            pluginResult,
-            callbackId: command.callbackId
-        )
-    }
-    
-    func getIp(command: CDVInvokedUrlCommand) {
-        var pluginResult = CDVPluginResult(
-            status: CDVCommandStatus_OK,
-            messageAsString: "0.0.0.47"
-        )
-        
-        self.commandDelegate!.sendPluginResult(
-            pluginResult,
-            callbackId: command.callbackId
-        )
-    }
-
+  
+  @objc(acquireWakeLock:) func acquireWakeLock(command: CDVInvokedUrlCommand) {
+    self.commandDelegate!.run(inBackground: {
+      let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
+      self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    })
+  }
+  
+  @objc(releaseWakeLock:) func releaseWakeLock(command: CDVInvokedUrlCommand) {
+    self.commandDelegate!.run(inBackground: {
+      let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
+      self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    })
+  }
+  
+  @objc(setKeepScreenOn:) func setKeepScreenOn(command: CDVInvokedUrlCommand) {
+    let keepScreenOn: Bool = command.argument(at: 0) as? Bool ?? false
+    FlcUtil.setKeepScreenOn(keepScreenOn)
+    self.commandDelegate!.run(inBackground: {
+      let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK)
+      self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    })
+  }
+  
+  @objc(decodeImage:) func decodeImage(command: CDVInvokedUrlCommand) {
+    self.commandDelegate!.run(inBackground: {
+      let input = command.argument(at: 0);
+      var pluginResult: CDVPluginResult
+      if input != nil {
+        let output: Data? = FlcUtil.decodeImage(input as! Data)
+        if output != nil {
+          pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAsArrayBuffer: output!)
+        } else {
+          pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Error decoding image")
+        }
+      } else {
+        pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: "Error: invalid argument passed")
+      }
+      self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    })
+  }
+  
+  @objc(getIp:) func getIp(command: CDVInvokedUrlCommand) {
+    self.commandDelegate!.run(inBackground: {
+      let ip: String = FlcUtil.getIp();
+      let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: ip)
+      self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    })
+  }
+  
 }

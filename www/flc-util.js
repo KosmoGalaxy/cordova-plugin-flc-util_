@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-flc-util.FlcUtil", function(require, exports, module) {
 const exec = require('cordova/exec');
 
 function FlcUtil() {}
@@ -94,3 +95,5 @@ FlcUtil.getIp = function(successCallback, errorCallback) {
 };
 
 module.exports = FlcUtil;
+
+});

@@ -28,12 +28,15 @@
     </platform>
     
     <platform name="ios">
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file target="config.xml" parent="/*">
             <feature name="FlcUtil">
-                <param name="ios-package" value="pl.fulllegitcode.util.FlcUtilPlugin" />
+                <param name="ios-package" value="FlcUtilPlugin" />
             </feature>
         </config-file>
         
+        <header-file src="src/ios/pl/fulllegitcode/util/FlcUtilObjectiveC.h" />
+        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtilObjectiveC.m" />
         <source-file src="src/ios/pl/fulllegitcode/util/FlcUtilPlugin.swift" />
+        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtil.swift" />
     </platform>
 </plugin>
