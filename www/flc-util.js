@@ -63,14 +63,18 @@ FlcUtil.setKeepScreenOn = function(value, successCallback, errorCallback) {
   );
 };
 
-FlcUtil.decodeImage = function(bytes, callback) {
+FlcUtil.decodeImage = function(bytes, successCallback, errorCallback) {
   exec(
     function(decodedBytes) {
-      if (callback) {
-        callback(decodedBytes);
+      if (successCallback) {
+        successCallback(decodedBytes);
       }
     },
-    function() {},
+    function(error) {
+      if (errorCallback) {
+        errorCallback(error);
+      }
+    },
     'FlcUtil',
     'decodeImage',
     [bytes]
