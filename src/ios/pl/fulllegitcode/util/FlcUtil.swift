@@ -7,8 +7,14 @@ class FlcUtil {
   }
   
   static func getIp() -> String {
-    let ips: [AnyHashable: String] = FlcUtilObjectiveC.getIPAddresses();
-    return String(ips["wireless"]!);
+    let ips: [AnyHashable: String] = FlcUtilObjectiveC.getIPAddresses()
+    var myIp: String
+    if String(ips["hotspot"]!) != "" {
+      myIp = String(ips["hotspot"]!)
+    } else {
+      myIp = String(ips["wireless"]!)
+    }
+    return myIp
   }
   
   static func decodeImage(_ input: Data) -> Data? {
