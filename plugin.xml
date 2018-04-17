@@ -34,9 +34,9 @@
             </feature>
         </config-file>
         
-        <header-file src="src/ios/pl/fulllegitcode/util/FlcUtilObjectiveC.h" />
-        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtilObjectiveC.m" />
-        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtilPlugin.swift" />
-        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtil.swift" />
+        <header-file src="src/ios/pl/fulllegitcode/util/FlcUtilObjectiveC.h" target-dir="src/pl/fulllegitcode/util" />
+        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtilObjectiveC.m" target-dir="src/pl/fulllegitcode/util" />
+        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtilPlugin.swift" target-dir="src/pl/fulllegitcode/util" />
+        <source-file src="src/ios/pl/fulllegitcode/util/FlcUtil.swift" target-dir="src/pl/fulllegitcode/util" />
     </platform>
 </plugin>
